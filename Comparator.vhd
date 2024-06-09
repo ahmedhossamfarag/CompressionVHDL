@@ -7,29 +7,40 @@ entity Comparator is
   port (
     CLK: in std_logic;
     wind: in WindType;
+    windhigh: in integer;
     dict: in DictType;
+    dictSz: in integer;
     start: in integer;
-    limit: in integer;
     equals: inout boolean;
-    finished: inout boolean
+    finished: inout boolean;
+    max_start: inout integer := DS;
+    max_limit: inout integer := 0;
+    indx: inout integer := 0
   );
 end entity;
 
 architecture Comparator of Comparator is
-    signal indx: integer := 0;
     signal prevEq: boolean;
 begin
     prevEq <= true when indx = 0 else equals;
     equals <= prevEq and wind(indx) = dict(start+ indx);
-    finished <= not equals or indx = limit;
+    finished <= not equals or indx = windhigh or start+indx >= dictSz-1;
 
     Count: process(CLK)
     begin
         if(rising_edge(CLK))then
             if(finished)then
                 indx <= 0;
+                if(equals or indx >= dictSz-1)then
+                  max_start <= DS;
+                  max_limit <= 0;
+                end if;
             else
                 indx <= indx + 1;
+                if(equals and indx >= max_limit)then
+                  max_start <= start;
+                  max_limit <= indx;
+                end if;
             end if;
         end if;
     end process;

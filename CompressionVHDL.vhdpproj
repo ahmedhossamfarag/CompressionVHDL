@@ -6,7 +6,6 @@
     <File Include="Config.vhd" />
     <File Include="Dictionary.vhd" />
     <File Include="Matcher.vhd" />
-    <File Include="MultiMatcher.vhd" />
     <File Include="Reciever.vhd" />
     <File Include="Transmiter.vhd" />
   </ItemGroup>

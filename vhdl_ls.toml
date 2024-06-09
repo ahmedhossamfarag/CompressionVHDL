@@ -7,7 +7,6 @@ work.files = [
 	'Config.vhd',
 	'Dictionary.vhd',
 	'Matcher.vhd',
-	'MultiMatcher.vhd',
 	'Reciever.vhd',
 	'Transmiter.vhd'
 ]
@@ -19,7 +18,6 @@ files = [
 	'Config.vhd',
 	'Dictionary.vhd',
 	'Matcher.vhd',
-	'MultiMatcher.vhd',
 	'Reciever.vhd',
 	'Transmiter.vhd'
 ]

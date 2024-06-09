@@ -12,7 +12,7 @@ architecture rtl of CompressionVHDL_tb is
 
     signal CLK : std_logic;
 
-    signal indata: DataType := "01010111001010010110";
+    signal indata: DataType := "10010101010011001010";
     signal outdata: DataType;
 begin
 

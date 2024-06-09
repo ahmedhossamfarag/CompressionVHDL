@@ -19,8 +19,8 @@ architecture Transmiter of Transmiter is
     signal data: TrDataType;
     signal dict: DictType;
     signal dictSz: integer;
-    signal dictStart: integer;
     signal wind: WindType;
+    signal windhigh: integer;
     signal equals: boolean;
     signal match_finished: boolean;
     signal indx: integer := 0;
@@ -29,9 +29,6 @@ begin
     data_generate: for i in 0 to indata'high generate
         data(i) <= indata(i);
     end generate;
-
-    inbyte <= data(indx) when not equals else data(indx+limit+1);
-    valid <= match_finished;
 
     dictionary_inst: entity work.Dictionary
     port map (
@@ -46,24 +43,29 @@ begin
         wind(i) <= data(indx+i);
     end generate;
 
-    multimatcher_inst: entity work.MultiMatcher
+    windhigh <= indata'high-indx when indata'high-indx < wind'high else wind'high;
+
+    matcher_inst: entity work.Matcher
     port map (
       CLK      => CLK,
       wind     => wind,
+      windhigh => windhigh,
       dict     => dict,
       dictSz   => dictSz,
-      start    => dictStart,
       limit    => limit,
+      start    => start,
       equals   => equals,
       finished => match_finished
     );
 
-    start <= dictStart when equals else DS;
+
+    inbyte <= data(indx+limit+1) when equals else data(indx);
+    valid <= match_finished;
 
     Count: process(CLK)
     begin
         if(rising_edge(CLK) and match_finished)then
-                if(equals)then
+                if(start < DS)then
                     if(indx + limit + 1 < indata'high)then
                         indx <= indx + limit + 2;
                     else
