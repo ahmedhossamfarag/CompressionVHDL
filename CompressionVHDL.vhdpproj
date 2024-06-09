@@ -1,0 +1,16 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="Comparator.vhd" />
+    <File Include="CompressionVHDL.vhd" />
+    <File Include="CompressionVHDL_tb.vhd" />
+    <File Include="Config.vhd" />
+    <File Include="Dictionary.vhd" />
+    <File Include="Matcher.vhd" />
+    <File Include="MultiMatcher.vhd" />
+    <File Include="Reciever.vhd" />
+    <File Include="Transmiter.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>CompressionVHDL.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,26 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'Comparator.vhd',
+	'CompressionVHDL.vhd',
+	'CompressionVHDL_tb.vhd',
+	'Config.vhd',
+	'Dictionary.vhd',
+	'Matcher.vhd',
+	'MultiMatcher.vhd',
+	'Reciever.vhd',
+	'Transmiter.vhd'
+]
+[libraries.work]
+files = [
+	'Comparator.vhd',
+	'CompressionVHDL.vhd',
+	'CompressionVHDL_tb.vhd',
+	'Config.vhd',
+	'Dictionary.vhd',
+	'Matcher.vhd',
+	'MultiMatcher.vhd',
+	'Reciever.vhd',
+	'Transmiter.vhd'
+]
+# auto-generated-end
