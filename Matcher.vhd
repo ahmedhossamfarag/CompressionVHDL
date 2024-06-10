@@ -33,6 +33,7 @@ begin
       dict      => dict,
       dictSz    => dictSz,
       start     => cmp_start,
+      reset     => finished,
       equals    => cmp_equals,
       finished  => cmp_finished,
       max_start => max_start,

@@ -11,6 +11,7 @@ entity Comparator is
     dict: in DictType;
     dictSz: in integer;
     start: in integer;
+    reset: in BOOLEAN;
     equals: inout boolean;
     finished: inout boolean;
     max_start: inout integer := DS;
@@ -31,7 +32,7 @@ begin
         if(rising_edge(CLK))then
             if(finished)then
                 indx <= 0;
-                if(equals or indx >= dictSz-1)then
+                if(reset)then
                   max_start <= DS;
                   max_limit <= 0;
                 end if;
